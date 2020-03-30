@@ -33,7 +33,6 @@ const ContentTitle = {
 };
 
 export const Card = (props) => {
-  console.log(props);
   return (<div style={CardWrapperStyle}>
     <div style={CardImageWrapper}>
       <img
