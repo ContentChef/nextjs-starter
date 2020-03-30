@@ -25,7 +25,7 @@ const Home = ({ topSites }) => (
           href={'/top-site/[publicId]'}
           as={`/top-site/${site.publicId}`}
         >
-          <a style={{ fontStyle: 'initial' }}>
+          <a style={{ textDecoration: 'initial' }}>
             <Card
               key={`top-site-${index}`}
               image={cloudinary.getCloudinaryPublicUrl(site.payload.image, site.requestContext.cloudName)}
