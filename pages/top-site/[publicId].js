@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from "../../components/layout";
 import {contentChef} from "../../services/contentChefClient";
-import {cloudinary} from "../../services/cloudinaryClient";
 
 const SiteWrapper = {
   textAlign: 'center'
@@ -46,7 +45,7 @@ const TopSite = ({ topSite, cloudName }) => {
           <div style={SiteWrapper}>
             <img
               className={ImageWrapper}
-              src={cloudinary.getCloudinaryPublicUrl(topSite.image, cloudName)}
+              src={contentChef.getImageUrl(topSite.image, cloudName)}
               alt={`${topSite.title} image`}
             />
             <div style={SiteContentWrapper}>
@@ -63,7 +62,7 @@ const TopSite = ({ topSite, cloudName }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const result = await contentChef.getPreviewStagingContent(params.publicId);
+  const result = await contentChef.getContent(params.publicId);
   return {
     props: {
       topSite: result.payload,

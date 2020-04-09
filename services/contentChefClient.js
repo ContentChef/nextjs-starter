@@ -1,25 +1,25 @@
-import ContentChefClient from '@contentchef/contentchef-node';
+import ContentChefClient, { createUrl } from '@contentchef/contentchef-node';
 
 class ContentChef {
-  client = undefined;
-  targetDate = undefined;
+  client;
+  targetDate;
   defaultChannel = 'example-ch';
+  onlineChannel;
 
   constructor() {
     this.client = ContentChefClient({
-      apiKey: "your-contentChef-api-key",
-      host: "your-contentChef-host",
       spaceId: 'your-contentChef-spaceId',
     }, this.targetDate);
+    this.onlineChannel = this.client.onlineChannel('your-contentChef-api-key', this.defaultChannel);
   }
 
   setTargetDate = (targetDate) => {
     this.targetDate = targetDate;
   }
 
-  searchPreviewStagingContents = async () => {
+  searchContents = async () => {
     try {
-      return (await this.client.previewChannel(this.defaultChannel, 'staging').search({
+      return (await this.onlineChannel.search({
         skip: 0,
         take: 10,
         contentDefinition: 'top-site',
@@ -31,10 +31,9 @@ class ContentChef {
     }
   }
 
-  getPreviewStagingContent = async (publicId) => {
+  getContent = async (publicId) => {
     try {
-      const result = await this.client
-        .previewChannel(this.defaultChannel, 'staging')
+      const result = await this.onlineChannel
         .content({
           publicId
         });
@@ -44,6 +43,10 @@ class ContentChef {
       return Promise.resolve(null);
     }
   }
+
+  getImageUrl = (publicId) => {
+    return createUrl(publicId);
+}
 }
 
 export const contentChef = new ContentChef();

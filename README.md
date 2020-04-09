@@ -26,13 +26,12 @@ Before to start with this starter project you will need:
 
     1) publish to stage your all your contents inside the ***Starter Repository***
     2) install @contentchef/contentchef-node (needed to retrieve contents from ContentChef) npm install --save @contentchef/contentchef-node
-    3) install cloudinary (since we work with cloudinary to handle media you will need of it to retrieve your media publicId) npm install cloudinary-core
-    4) create a support class for contentChef and Cloudinary 
-    5) create a component layout that will wrap your next pages
-    6) create a component a card that will handle your contentchef search data
-    7) inside the page ***pages/index.tsx*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef search data
-    8) create a new folder inside the pages folder and call it ***top-sites*** inside the folder a file named ***[publicId].js***
-    9) inside the file ***[publicId].js*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef get data
+    3) create a support class for contentChef 
+    4) create a component layout that will wrap your next pages
+    5) create a component a card that will handle your contentchef search data
+    6) inside the page ***pages/index.tsx*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef search data
+    7) create a new folder inside the pages folder and call it ***top-sites*** inside the folder a file named ***[publicId].js***
+    8) inside the file ***[publicId].js*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef get data
 
 ## Learn More
 

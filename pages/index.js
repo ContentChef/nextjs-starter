@@ -3,7 +3,6 @@ import { contentChef } from '../services/contentChefClient'
 import { Card } from "../components/card";
 import Layout from "../components/layout";
 import Link from "next/link";
-import {cloudinary} from "../services/cloudinaryClient";
 
 const Home = ({ topSites }) => (
   <Layout
@@ -28,7 +27,7 @@ const Home = ({ topSites }) => (
           <a style={{ textDecoration: 'initial' }}>
             <Card
               key={`top-site-${index}`}
-              image={cloudinary.getCloudinaryPublicUrl(site.payload.image, site.requestContext.cloudName)}
+              image={contentChef.getImageUrl(site.payload.image)}
               title={site.payload.title}
               description={site.payload.description}
               url={site.payload.url}
@@ -41,7 +40,7 @@ const Home = ({ topSites }) => (
 );
 
 export async function getServerSideProps(context) {
-  const result = await contentChef.searchPreviewStagingContents();
+  const result = await contentChef.searchContents();
   return {
     props: { topSites: result }
   }
