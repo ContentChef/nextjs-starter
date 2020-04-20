@@ -1,45 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img src="public/contentchef_logo.svg" height="64"/>
+</div>
 
-## Getting Started
+NextJs Starter for [ContentChef - Headless CMS](https://www.contentchef.io/)
+===========================
 
-To run the development server:
+[ContentChef](https://www.contentchef.io/) is an Headless CMS designed to accelarete the development of modern,cross channel digital products.
+
+This starter is a simple [NextJS](https://nextjs.org/) integrated with our Delivery API using the [ContentChef JS/Typescript SDK](https://github.com/ContentChef/contentchef-node)
+
+In this example plain JS is used, but our SDK is primarly written for **Typescript** applications!
+
+# Requirements
+
+In order to use make this starter work, you will need
+
+* An active ContentChef account (sign up for a 30-day free trial [here](https://www.contentchef.io/registration))
+* Node JS >= 10.13
+
+# Clone & Installation
+
+Clone the starter repo and install all the deps
+
+```bash
+    git clone git@github.com:ContentChef/nextjs-starter.git
+    cd nextjs-starter
+    npm install
+```
+
+Get your SpaceID, Online API Key from your dashboard home page.
+
+![ContentChef Dashboard - Home](https://res.cloudinary.com/contentchef/image/upload/v1/chefsite-2910/I49Zi00Uf7S/spaceid)
+
+Open `./services/contentChefClient.js` and copy your data in the clinet configuration and use "example-ch" for your channel now.
+
+```javascript
+import ContentChefClient, { createUrl } from '@contentchef/contentchef-node';
+
+class ContentChef {
+  client;
+  targetDate;
+  defaultChannel = 'example-ch';
+  onlineChannel;
+
+  constructor() {
+    this.client = ContentChefClient({
+      spaceId: 'your-contentChef-spaceId',
+    }, this.targetDate);
+    this.onlineChannel = this.client.onlineChannel('your-contentChef-api-key', this.defaultChannel);
+  }
+
+}
+
+```
+
+You are now ready to start the nextjs server
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Enjoy!
 
-Inside the pages you can find two pages:
-    - `pages/index.js` in this page you will find an example of list of published contents
-    - `pages/top-site/[publicId]` in this page you will find an example of a published content
+You can now visit [https://localhost:3000/](https://localhost:3000/) and see the list of content fetched from Content Chef!
 
-## Before to start
-Before to start with this starter project you will need:
+To Learns More
+===========================
 
-    - an active ContentChef subscription and an active space 
-    - your spaceId, spaceApiKey and the ContentChef api url (you can get those information in your space home inside the ContentChef dashboard app) 
-
-## STEP
-
-    1) publish to stage your all your contents inside the ***Starter Repository***
-    2) install @contentchef/contentchef-node (needed to retrieve contents from ContentChef) npm install --save @contentchef/contentchef-node
-    3) create a support class for contentChef 
-    4) create a component layout that will wrap your next pages
-    5) create a component a card that will handle your contentchef search data
-    6) inside the page ***pages/index.tsx*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef search data
-    7) create a new folder inside the pages folder and call it ***top-sites*** inside the folder a file named ***[publicId].js***
-    8) inside the file ***[publicId].js*** implement the next method ***getServerSideProps*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef get data
-
-## Learn More
-
-To learn more about ContentChef and Next.js, take a look at the following resources:
-
-- [ContentChef Site](https://contentchef.io) - to know more about ContentChef
-- [ContentChef Documentation](https://docs.contentchef.io/) - learn about ContentChef features
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-
+* [ContentChef Website](https://wwww.contentchef.io)
+* [ContentChef Docs](https://docs.contentchef.io)
+* [ContentChef Blog](https://www.contentchef.io/blog)
+* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.

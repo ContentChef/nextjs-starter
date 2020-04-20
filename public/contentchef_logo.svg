@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2321.18" height="429.688" viewBox="0 0 2321.18 429.688">
+  <g id="Group_338" data-name="Group 338" transform="translate(-206.82 -81)">
+    <text id="ContentChef" transform="translate(744 396)" fill="#040a2f" font-size="306" font-family="Nunito-SemiBold, Nunito" font-weight="600"><tspan x="0" y="0">Content</tspan><tspan y="0" fill="#2ddfff" font-family="Nunito-ExtraBold, Nunito" font-weight="800">Chef</tspan></text>
+    <g id="Group_320" data-name="Group 320" transform="translate(22 26)">
+      <g id="Group_319" data-name="Group 319" transform="translate(-14460 4465)">
+        <path id="Rectangle_1012" data-name="Rectangle 1012" d="M0,0H103a0,0,0,0,1,0,0V167.5A51.5,51.5,0,0,1,51.5,219h0A51.5,51.5,0,0,1,0,167.5V0A0,0,0,0,1,0,0Z" transform="translate(15098.986 -4173.144) rotate(135)" fill="#27bdd8"/>
+        <path id="Rectangle_1011" data-name="Rectangle 1011" d="M0,0H103a0,0,0,0,1,0,0V220.5A51.5,51.5,0,0,1,51.5,272h0A51.5,51.5,0,0,1,0,220.5V0A0,0,0,0,1,0,0Z" transform="translate(15026.154 -4245.477) rotate(45)" fill="#2ddfff"/>
+        <path id="Path_4980" data-name="Path 4980" d="M16384.826-1653.2l-72.078,72.607-7.094-7.086Z" transform="translate(-1359 -2592.298)" opacity="0.333"/>
+      </g>
+      <g id="Group_316" data-name="Group 316" transform="translate(184.82 55)">
+        <path id="Rectangle_1013" data-name="Rectangle 1013" d="M0,0H103a0,0,0,0,1,0,0V167.5A51.5,51.5,0,0,1,51.5,219h0A51.5,51.5,0,0,1,0,167.5V0A0,0,0,0,1,0,0Z" transform="translate(0 192.832) rotate(-45)" fill="#003aa7"/>
+        <path id="Rectangle_1014" data-name="Rectangle 1014" d="M0,0H103a0,0,0,0,1,0,0V220.5A51.5,51.5,0,0,1,51.5,272h0A51.5,51.5,0,0,1,0,220.5V0A0,0,0,0,1,0,0Z" transform="translate(72.832 265.165) rotate(-135)" fill="#0058ff"/>
+        <path id="Path_4981" data-name="Path 4981" d="M16305.654-1580.6l72.078-72.607,7.094,7.086Z" transform="translate(-16231.82 1845.702)" opacity="0.333"/>
+      </g>
+    </g>
+  </g>
+</svg>
