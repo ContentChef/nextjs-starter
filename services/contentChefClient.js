@@ -8,9 +8,9 @@ class ContentChef {
 
   constructor() {
     this.client = ContentChefClient({
-      spaceId: 'your-contentChef-spaceId',
+      spaceId: 'demo-65de',
     }, this.targetDate);
-    this.onlineChannel = this.client.onlineChannel('your-contentChef-api-key', this.defaultChannel);
+    this.onlineChannel = this.client.onlineChannel('D--32WY7JGOYQYSSY-J8-O', this.defaultChannel);
   }
 
   setTargetDate = (targetDate) => {

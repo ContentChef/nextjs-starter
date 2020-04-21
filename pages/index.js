@@ -39,7 +39,7 @@ const Home = ({ topSites }) => (
   </Layout>
 );
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const result = await contentChef.searchContents();
   return {
     props: { topSites: result }

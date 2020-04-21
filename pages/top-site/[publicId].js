@@ -60,8 +60,7 @@ const TopSite = ({ topSite, cloudName }) => {
   )
 };
 
-export async function getServerSideProps(context) {
-  const { params } = context;
+export async function getStaticProps({ params }) {
   const result = await contentChef.getContent(params.publicId);
   return {
     props: {
@@ -69,6 +68,18 @@ export async function getServerSideProps(context) {
       cloudName: result.requestContext.cloudName
     }
   }
+}
+
+export async function getStaticPaths() {
+  const sites = await contentChef.searchContents();
+  const publicIds = sites.map(site => site.publicId);
+  const paths = publicIds.map(publicId =>{
+    return {params:{ publicId:publicId } }
+  });
+  return {
+    paths:paths,
+    fallback: false 
+  };
 }
 
 export default TopSite;
