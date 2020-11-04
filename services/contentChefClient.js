@@ -1,27 +1,36 @@
-import ContentChefClient, { createUrl } from '@contentchef/contentchef-node';
+import ContentChefClient from '@contentchef/contentchef-node';
 
 class ContentChef {
   client;
   targetDate;
   defaultChannel = 'example-ch';
-  onlineChannel;
+  channel;
 
   constructor() {
     this.client = ContentChefClient({
-      spaceId: 'your-contentChef-spaceId',
+      spaceId: process.env.NEXT_PUBLIC_CHEF_SPACE_ID,
     }, this.targetDate);
-    this.onlineChannel = this.client.onlineChannel('your-contentChef-api-key', this.defaultChannel);
+    const shouldUsePreview = process.env.NEXT_PUBLIC_CHEF_USE_PREVIEW === 'true';
+
+    const createMethod = process.env.NEXT_PUBLIC_CHEF_USE_PREVIEW === 'true' ? 
+      this.client.previewChannel : this.client.onlineChannel;
+
+    this.channel = !shouldUsePreview ? 
+                      this.client.onlineChannel(process.env.NEXT_PUBLIC_CHEF_API_KEY, this.defaultChannel): 
+                      this.client.previewChannel(process.env.NEXT_PUBLIC_CHEF_API_KEY, this.defaultChannel, 'staging');
+                    
   }
 
   setTargetDate = (targetDate) => {
     this.targetDate = targetDate;
   }
 
-  searchContents = async () => {
+  searchTopSitesContents = async (publicIdFilter = [] , take = 10) => {
     try {
-      return (await this.onlineChannel.search({
+      return (await this.channel.search({
         skip: 0,
-        take: 10,
+        take,
+        publicId: !!publicIdFilter && publicIdFilter.length && publicIdFilter.length > 0 ? publicIdFilter : undefined,
         contentDefinition: 'top-site',
         sorting: '+onlineDate'
       })).data.items
@@ -33,7 +42,7 @@ class ContentChef {
 
   getContent = async (publicId) => {
     try {
-      const result = await this.onlineChannel
+      const result = await this.channel
         .content({
           publicId
         });
@@ -44,9 +53,6 @@ class ContentChef {
     }
   }
 
-  getImageUrl = (publicId) => {
-    return createUrl(publicId);
-}
 }
 
 export const contentChef = new ContentChef();

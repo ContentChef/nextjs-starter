@@ -28,31 +28,11 @@ Clone the starter repo and install all the deps
     npm install
 ```
 
-Get your SpaceID, Online API Key from your dashboard home page.
+Get your SpaceID, Online API Key from your dashboard home page, if you plan to use preview you *have to copy the PREVIEW api key*
 
 ![ContentChef Dashboard - Home](https://res.cloudinary.com/contentchef/image/upload/v1/chefsite-2910/I49Zi00Uf7S/spaceid)
 
-Open `./services/contentChefClient.js` and copy your data in the clinet configuration and use "example-ch" for your channel now.
-
-```javascript
-import ContentChefClient, { createUrl } from '@contentchef/contentchef-node';
-
-class ContentChef {
-  client;
-  targetDate;
-  defaultChannel = 'example-ch';
-  onlineChannel;
-
-  constructor() {
-    this.client = ContentChefClient({
-      spaceId: 'your-contentChef-spaceId',
-    }, this.targetDate);
-    this.onlineChannel = this.client.onlineChannel('your-contentChef-api-key', this.defaultChannel);
-  }
-
-}
-
-```
+Copy the file `.sample.env` to `.env` and complete your spaceId , api key , for now you can use `example-ch`
 
 You are now ready to start the nextjs server
 

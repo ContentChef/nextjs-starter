@@ -3,6 +3,7 @@ import { contentChef } from '../services/contentChefClient'
 import { Card } from "../components/card";
 import Layout from "../components/layout";
 import Link from "next/link";
+import { createUrl } from '@contentchef/contentchef-media';
 
 const Home = ({ topSites }) => (
   <Layout
@@ -27,7 +28,7 @@ const Home = ({ topSites }) => (
           <a style={{ textDecoration: 'initial' }}>
             <Card
               key={`top-site-${index}`}
-              image={contentChef.getImageUrl(site.payload.image)}
+              image={createUrl(site.payload.image, { fetchFormat: 'auto', width: '1280' })}
               title={site.payload.title}
               description={site.payload.description}
               url={site.payload.url}
@@ -40,7 +41,8 @@ const Home = ({ topSites }) => (
 );
 
 export async function getServerSideProps(context) {
-  const result = await contentChef.searchContents();
+  const result = await contentChef.searchTopSitesContents();
+
   return {
     props: { topSites: result }
   }
